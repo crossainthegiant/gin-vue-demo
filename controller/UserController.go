@@ -122,3 +122,9 @@ func Login(c *gin.Context) {
 		"msg":  "登陆成功",
 	})
 }
+
+func Info(c *gin.Context) {
+	user, _ := c.Get("user") //获取用户信息时用户应该已经通过验证，我们能直接从上下文信息中得到用户信息
+
+	c.JSON(http.StatusOK, gin.H{"code": 200, "data": gin.H{"user": user}})
+}
